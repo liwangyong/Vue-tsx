@@ -1,9 +1,10 @@
-import {ActionTree} from 'vuex'
+import { ActionTree } from 'vuex'
 import axios from 'axios'
-import {RootState} from './types'
+import { RootState } from '../types'
+import { UserState } from './types'
 
-export const actions: ActionTree<RootState, any> = {
-	fetchData({commit}): any {
+export const actions: ActionTree<UserState, RootState> = {
+	fetchData({ commit }): any {
 		// axios({
 		// 	url: 'https://....',
 		// }).then(

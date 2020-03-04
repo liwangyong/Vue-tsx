@@ -9,6 +9,6 @@ export interface Module<S, R> {
 	modules?: ModuleTree<R>
 }
 // types.ts
-export interface RootState {
-	version: string
+export interface UserState {
+	userId: string
 }
