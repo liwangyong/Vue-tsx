@@ -9,10 +9,14 @@ export default class extends Tsx.Component<Props> {
 	@Prop() type?: number;
 	// 给予默认值
 	value: string = ""
+	getDom(e: number, x: Event) {
+		console.log(111, e, x)
+	}
 	render() {
 		return (
 			<div class="home">
 				{this.type}
+				<div onClick={this.getDom.bind(this, 555)}>点击我</div>
 				<input v-model={this.value} />
 				{this.value}
 				<img alt="Vue logo" src="../assets/logo.png" />
