@@ -17,7 +17,7 @@ module.exports = {
 			extensions: [".js", ".vue", ".json", ".ts", ".tsx"] // 加入ts 和 tsx
 		},
 	},
-	lintOnSave: true,
+	lintOnSave: false,
 	chainWebpack: config => {
 		config.resolve.alias
 			.set('@', resolve('src'))

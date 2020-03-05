@@ -1,14 +1,14 @@
-import { Component, Prop } from 'vue-property-decorator'
+import {Component, Prop} from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld'
-import * as Tsx from "vue-tsx-support";
+import * as Tsx from 'vue-tsx-support'
 export interface Props {
-	type?: number;
+	type?: number
 }
 @Component
 export default class extends Tsx.Component<Props> {
-	@Prop() type?: number;
+	@Prop() type?: number
 	// 给予默认值
-	value: string = ""
+	value: string = ''
 	render() {
 		return (
 			<div class="home">
