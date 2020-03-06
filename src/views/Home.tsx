@@ -2,6 +2,7 @@ import {Component, Prop} from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld'
 import * as Tsx from 'vue-tsx-support'
 import {VNode} from 'vue'
+import style from './home.modules.scss'
 interface Props {
 	type?: number
 }
@@ -9,9 +10,6 @@ interface propItem {
 	date: string
 	name: string
 	address: string
-}
-interface ScopedSlots {
-	default: {row: propItem}
 }
 @Component
 export default class extends Tsx.Component<Props> {
@@ -47,6 +45,7 @@ export default class extends Tsx.Component<Props> {
 		return (
 			<div class="home">
 				<el-input v-model={this.value} placeholder="请输入内容"></el-input>
+				<span class={style.colors}>{this.value}xx</span>
 				<HelloWorld msg="Welcome to Your Vue.js App" />
 				<el-table data={this.tableData} style="width: 100%">
 					<el-table-column

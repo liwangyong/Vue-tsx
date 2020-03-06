@@ -4,8 +4,8 @@ import {RootState} from '../types'
 import {UserState} from './types'
 
 export const actions: ActionTree<UserState, RootState> = {
-	fetchData({commit}): any {
-		$axios.request({
+	fetchData({commit}) {
+		return $axios.request({
 			url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
 			data: {
 				from: 'android',

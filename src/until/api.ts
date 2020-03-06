@@ -1,6 +1,5 @@
 import axios, {AxiosResponse, AxiosRequestConfig, AxiosError} from 'axios'
 import {Message} from 'element-ui'
-declare type Methods = 'GET' | 'OPTIONS' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT'
 
 const baseUrl = process.env.NODE_ENV
 class HttpRequest {

@@ -11,8 +11,8 @@ export default class App extends Vue {
 		this.$router.go(-1)
 	}
 	async mounted() {
-		const data = await this.actionFoo()
-		console.log(data)
+		// const data = await this.actionFoo()
+		// console.log(data)
 	}
 	render() {
 		return (

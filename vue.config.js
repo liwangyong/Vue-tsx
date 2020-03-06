@@ -17,7 +17,7 @@ module.exports = {
 	productionSourceMap: process.env.NODE_ENV !== 'production',
 	configureWebpack: {
 		resolve: {
-			extensions: ['.js', '.vue', '.json', '.ts', '.tsx'], // 加入ts 和 tsx
+			extensions: ['.js', '.vue', '.json', '.ts', '.tsx', '.scss'], // 加入ts 和 tsx
 		},
 		//或者
 		//警告 webpack 的性能提示
@@ -34,10 +34,21 @@ module.exports = {
 		},
 	},
 	chainWebpack: config => {
+		// 忽略提示
+		// ignoreCssWarnings(config);
+		// css to typings-for-css-modules-loader
+		;['css', 'less', 'scss', 'sass', 'stylus', 'postcss'].forEach(rule => {
+			// rules for *.module.* files
+			config.module
+				.rule(rule)
+				.oneOf('normal-modules')
+				.uses.get('css-loader')
+				.set('loader', 'typings-for-css-modules-loader')
+		})
 		config.resolve.alias
 			.set('@', resolve('src'))
 			.set('@assets', resolve('src/assets'))
-            .set('@components', resolve('src/components'))
-            .set('@until', resolve('src/until'))
+			.set('@components', resolve('src/components'))
+			.set('@until', resolve('src/until'))
 	},
 }
