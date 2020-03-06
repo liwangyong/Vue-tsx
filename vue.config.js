@@ -45,6 +45,13 @@ module.exports = {
 				.uses.get('css-loader')
 				.set('loader', 'typings-for-css-modules-loader')
 		})
+		config.module
+			.rule('tsx')
+			.use('ts-loader')
+			.loader('ts-loader')
+			.tap(options => {
+				return Object.assign(options || {}, {allowTsInNodeModules: true})
+			})
 		config.resolve.alias
 			.set('@', resolve('src'))
 			.set('@assets', resolve('src/assets'))
