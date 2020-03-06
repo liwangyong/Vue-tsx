@@ -1,5 +1,5 @@
 import {Component, Vue} from 'vue-property-decorator'
-import {State, Getter, Action, Mutation, namespace} from 'vuex-class'
+import {namespace} from 'vuex-class'
 
 const User = namespace('user')
 import './index.scss'
