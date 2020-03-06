@@ -3,7 +3,7 @@ import {getters} from './getters'
 import {actions} from './actions'
 import {mutations} from './mutations'
 import {UserState} from './types'
-import { RootState } from '../types'
+import {RootState} from '../types'
 
 export const state: UserState = {
 	userId: 'wx123654789',

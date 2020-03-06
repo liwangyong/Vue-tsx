@@ -1,5 +1,5 @@
 import {ModuleTree, MutationTree, ActionTree, GetterTree} from 'vuex'
-
+// state类型及请求参数申明
 export interface Module<S, R> {
 	namespaced?: boolean
 	state?: S | (() => S)
