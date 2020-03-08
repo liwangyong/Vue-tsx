@@ -2,7 +2,6 @@ import {Component, Vue} from 'vue-property-decorator'
 import {namespace} from 'vuex-class'
 
 const User = namespace('user')
-import './index.scss'
 @Component
 export default class App extends Vue {
 	@User.State('version') version!: string
@@ -16,7 +15,7 @@ export default class App extends Vue {
 	}
 	render() {
 		return (
-			<div id="app" class="color">
+			<div id="app">
 				{this.version}
 				<router-view />
 			</div>

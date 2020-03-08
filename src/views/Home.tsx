@@ -1,8 +1,10 @@
-import {Component, Prop} from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld'
 import * as Tsx from 'vue-tsx-support'
-import {VNode} from 'vue'
-import style from './home.modules.scss'
+import { VNode } from 'vue'
+import * as style from './home.module.scss'
+import { Button, Select } from 'element-ui';
+console.log(style)
 interface Props {
 	type?: number
 }
@@ -11,7 +13,11 @@ interface propItem {
 	name: string
 	address: string
 }
-@Component
+@Component({
+	components: {
+		[Button.name]: Button,
+	}
+})
 export default class extends Tsx.Component<Props> {
 	// 给予默认值
 	value: string = ''
@@ -37,27 +43,16 @@ export default class extends Tsx.Component<Props> {
 			address: '上海市普陀区金沙江路 1516 弄',
 		},
 	]
-	@Prop({default: 2}) type?: number
+	@Prop({ default: 2 }) type?: number
 	mounted() {
 		console.log('初始化')
 	}
 	render() {
 		return (
 			<div class="home">
-				<el-input v-model={this.value} placeholder="请输入内容"></el-input>
+				<el-button>我是你爸爸啊</el-button>
 				<span class={style.colors}>{this.value}xx</span>
 				<HelloWorld msg="Welcome to Your Vue.js App" />
-				<el-table data={this.tableData} style="width: 100%">
-					<el-table-column
-						scopedSlots={{
-							default: (p: {row: propItem}): VNode => <span>{p.row?.date}</span>,
-						}}
-						label="日期"
-						width="180"
-					></el-table-column>
-					<el-table-column prop="name" label="姓名" width="180"></el-table-column>
-					<el-table-column prop="address" label="地址"></el-table-column>
-				</el-table>
 			</div>
 		)
 	}

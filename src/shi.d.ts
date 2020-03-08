@@ -12,7 +12,3 @@ declare module 'vue/types/options' {
 		ref?: string
 	}
 }
-declare module '*.scss' {
-	const scss: any
-	export default scss
-}
