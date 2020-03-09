@@ -1,9 +1,8 @@
 import {Component, Prop} from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld'
 import * as Tsx from 'vue-tsx-support'
-import {VNode} from 'vue'
 import * as style from './home.module.scss'
-import {Button, Select} from 'element-ui'
+import {Button, Input, Message, Dialog} from 'element-ui'
 console.log(style)
 interface Props {
 	type?: number
@@ -16,11 +15,14 @@ interface propItem {
 @Component({
 	components: {
 		[Button.name]: Button,
+		[Input.name]: Input,
+		[Dialog.name]: Dialog,
 	},
 })
 export default class extends Tsx.Component<Props> {
 	// 给予默认值
 	value: string = ''
+	dialogTableVisible: boolean = false
 	tableData: propItem[] = [
 		{
 			date: '2016-05-02',
@@ -50,10 +52,19 @@ export default class extends Tsx.Component<Props> {
 	render() {
 		return (
 			<div class="home">
-				<el-button>我是你爸爸啊</el-button>
-				<span class={style.colors}>{this.value}xx</span>
-				<span class="color">{process.env.VUE_APP_DATA_URL}</span>
+				<el-button onClick={() => Message.error('测试')}>我是你爸爸啊</el-button>
+				<el-button onClick={() => (this.dialogTableVisible = true)}>打开Dialog</el-button>
+				<el-Input v-model={this.value} />
+				<span class={style.colors}>{this.value}</span>
+				<p class="color">{process.env.VUE_APP_DATA_URL}</p>
 				<HelloWorld msg="Welcome to Your Vue.js App" />
+				<el-dialog
+					title="收货地址"
+					visible={this.dialogTableVisible}
+					{...{on: {'update:visible': (e: boolean) => (this.dialogTableVisible = e)}}}
+				>
+					<p></p>
+				</el-dialog>
 			</div>
 		)
 	}

@@ -1,8 +1,13 @@
 import VueRouter, {Route} from 'vue-router'
+import { ElMessage } from 'element-ui/types/message';
+import { ElMessageBoxShortcutMethod } from 'element-ui/types/message-box';
 declare module 'vue/types/vue' {
 	interface Vue {
 		$router: VueRouter
-		$route: Route
+        $route: Route
+        
+        $message: ElMessage
+        $confirm: ElMessageBoxShortcutMethod
 	}
 }
 
