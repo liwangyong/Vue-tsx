@@ -56,7 +56,7 @@ export default class extends Tsx.Component<Props> {
 				<el-button onClick={() => (this.dialogTableVisible = true)}>打开Dialog</el-button>
 				<el-Input v-model={this.value} />
 				<span class={style.colors}>{this.value}</span>
-				<p class="color">{process.env.VUE_APP_DATA_URL}</p>
+				<p class={style.text}>{process.env.VUE_APP_DATA_URL}</p>
 				<HelloWorld msg="Welcome to Your Vue.js App" />
 				<el-dialog
 					title="收货地址"

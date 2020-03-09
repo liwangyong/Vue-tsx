@@ -19,20 +19,21 @@ input,
 textarea,
 select {
 	margin: 0;
-	padding: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body {
 	font: 18px '宋体', 'Arial Narrow', HELVETICA;
-	background: #fff;
+    background: #fff;
+    box-sizing: border-box;
 	-webkit-text-size-adjust: 100%;
+}
+div {
+    box-sizing: border-box;
 }
 a {
 	color: #2d374b;
 	text-decoration: none;
-}
-a:hover {
-	color: #cd0200;
-	text-decoration: underline;
 }
 em {
 	font-style: normal;
