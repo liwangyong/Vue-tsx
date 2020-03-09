@@ -9,22 +9,22 @@ module.exports = {
 	productionSourceMap: false,
 	chainWebpack: config => {
 		config.module
-			.rule("tsx")
+			.rule('tsx')
 			.test(/\.tsx$/)
-			.use("vue-jsx-hot-loader")
-			.before("babel-loader")
-			.loader("vue-jsx-hot-loader");
+			.use('vue-jsx-hot-loader')
+			.before('babel-loader')
+			.loader('vue-jsx-hot-loader')
 		// 忽略提示
 		// ignoreCssWarnings(config);
 		// css to typings-for-css-modules-loader
-		["css", "less", "scss", "sass", "stylus", "postcss"].forEach(rule => {
-			// rules for *.module.* files
-			config.module
-				.rule(rule)
-				.oneOf("normal-modules")
-				.uses.get("css-loader")
-				.set("loader", "typings-for-css-modules-loader");
-		});
+		// ["css", "less", "scss", "sass", "stylus", "postcss"].forEach(rule => {
+		// 	// rules for *.module.* files
+		// 	config.module
+		// 		.rule(rule)
+		// 		.oneOf("normal-modules")
+		// 		.uses.get("css-loader")
+		// 		.set("loader", "typings-for-css-modules-loader");
+		// });
 		config.resolve.alias
 			.set('@', resolve('src'))
 			.set('@assets', resolve('src/assets'))
@@ -33,7 +33,7 @@ module.exports = {
 	},
 	// ...
 	css: {
-		extract: true,
+		// extract: true,
 		// 驼峰
 		// camelCase: true,
 		loaderOptions: {
@@ -47,7 +47,7 @@ module.exports = {
 				// camelCase: true,
 				// html 中 实际的 css 类名
 				// localIdentName: process.env.NODE_ENV !== "production" ? "[local]-[hash:base64:5]" : "[hash:base64:5]"
-			}
+			},
 		},
 	},
 	configureWebpack: {
@@ -63,12 +63,12 @@ module.exports = {
 			//生成文件的最大体积
 			maxAssetSize: 30000000,
 			//只给出 js 文件的性能提示
-			assetFilter: function (assetFilename) {
+			assetFilter: function(assetFilename) {
 				return assetFilename.endsWith('.js')
 			},
 		},
 	},
 	devServer: {
-		port: 8800 // webpack-dev-server port
-	}
+		port: 8800, // webpack-dev-server port
+	},
 }

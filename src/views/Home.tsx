@@ -1,9 +1,9 @@
-import { Component, Prop } from 'vue-property-decorator'
+import {Component, Prop} from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld'
 import * as Tsx from 'vue-tsx-support'
-import { VNode } from 'vue'
+import {VNode} from 'vue'
 import * as style from './home.module.scss'
-import { Button, Select } from 'element-ui';
+import {Button, Select} from 'element-ui'
 console.log(style)
 interface Props {
 	type?: number
@@ -16,7 +16,7 @@ interface propItem {
 @Component({
 	components: {
 		[Button.name]: Button,
-	}
+	},
 })
 export default class extends Tsx.Component<Props> {
 	// 给予默认值
@@ -43,7 +43,7 @@ export default class extends Tsx.Component<Props> {
 			address: '上海市普陀区金沙江路 1516 弄',
 		},
 	]
-	@Prop({ default: 2 }) type?: number
+	@Prop({default: 2}) type?: number
 	mounted() {
 		console.log('初始化')
 	}
@@ -52,6 +52,7 @@ export default class extends Tsx.Component<Props> {
 			<div class="home">
 				<el-button>我是你爸爸啊</el-button>
 				<span class={style.colors}>{this.value}xx</span>
+				<span class="color">{process.env.VUE_APP_DATA_URL}</span>
 				<HelloWorld msg="Welcome to Your Vue.js App" />
 			</div>
 		)

@@ -1,7 +1,7 @@
 import axios, {AxiosResponse, AxiosRequestConfig, AxiosError} from 'axios'
 // import {Message} from 'element-ui'
 
-const baseUrl = process.env.NODE_ENV
+const baseURL = process.env.VUE_APP_DATA_URL
 class HttpRequest {
 	instance: any
 	constructor() {
@@ -10,7 +10,7 @@ class HttpRequest {
 	}
 	getInsideConfig() {
 		const config = {
-			baseURL: baseUrl,
+			baseURL,
 			headers: {},
 		}
 		return config
