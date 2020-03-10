@@ -1,4 +1,5 @@
 import axios, {AxiosResponse, AxiosRequestConfig, AxiosError} from 'axios'
+import { Message } from 'element-ui'
 // import {Message} from 'element-ui'
 
 const baseURL = process.env.VUE_APP_DATA_URL
@@ -30,28 +31,28 @@ class HttpRequest {
 		instance.interceptors.response.use(
 			(res: AxiosResponse) => {
 				const {data, status} = res
+				switch (status) {
+					case 401:
+						Message({message: '接口配置未经授权！', type: 'error', duration: 3000})
+						break
+					case 404:
+						Message({message: '服务端接口未找到！', type: 'error', duration: 3000})
+						break
+					case 415:
+						Message({message: 'HTTP协议不匹配，请确认！', type: 'error', duration: 3000})
+						break
+					case 500:
+						Message({message: '服务器未启动！', type: 'error', duration: 3000})
+						break
+					default:
+						Message({message: '未知错误！', type: 'error', duration: 3000})
+						break
+				}
 				return {data, status}
 			},
 			(error: AxiosError) => {
 				if (error && error.request) {
 					const status = error.request.status
-					// switch (status) {
-					// 	case 401:
-					// 		Message({message: '接口配置未经授权！', type: 'error', duration: 3000})
-					// 		break
-					// 	case 404:
-					// 		Message({message: '服务端接口未找到！', type: 'error', duration: 3000})
-					// 		break
-					// 	case 415:
-					// 		Message({message: 'HTTP协议不匹配，请确认！', type: 'error', duration: 3000})
-					// 		break
-					// 	case 500:
-					// 		Message({message: '服务器未启动！', type: 'error', duration: 3000})
-					// 		break
-					// 	default:
-					// 		Message({message: '未知错误！', type: 'error', duration: 3000})
-					// 		break
-					// }
 				}
 				return Promise.reject(error)
 			},

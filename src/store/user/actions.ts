@@ -1,24 +1,14 @@
-import $axios from '@/until/api'
 import {ActionTree} from 'vuex'
 import {RootState} from '../types'
 import {UserState} from './types'
+import FleetApi from '@/http/fleetApi'
 
 export const actions: ActionTree<UserState, RootState> = {
 	fetchData({commit}) {
-		return $axios.request({
-			url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
-			data: {
-				from: 'android',
-				version: '5.6.5.0',
-				method: 'baidu.ting.artist.getSongList',
-				format: 'json',
-				order: 2,
-				tinguid: 7994,
-				artistid: 7994,
-				offset: 0,
-				limits: 50,
-			},
-			method: 'get',
+		return new Promise((resolve, reject) => {
+			FleetApi.get('/customer/shopping-cart', {})
+				.then(res => resolve(res))
+				.catch(err => reject(err))
 		})
 	},
 }
