@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
-
+import RouterGuards from '@/guard/router-guard'
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,5 +22,5 @@ const router = new VueRouter({
 	// base: "/",
 	routes,
 })
-
+router.beforeEach((to, from, next) => RouterGuards.enterVerification(to, from, next))
 export default router
